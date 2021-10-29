@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { View, Text } from "react-native";
+import {
+  View,
+  Text,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+} from "react-native";
 import LogIn from "../../components/Form/LogIn";
 import ResetPassword from "../../components/Form/ResetPassword";
 import SignUp from "../../components/Form/SignUp";
@@ -19,12 +25,26 @@ export default function Authentication() {
     }
   }
   return (
-    <View style={styles.authContainer}>
-      <Text style={styles.hero}>
-        The {"\n"} greatest{"\n"} app{"\n"}
-        <Text style={styles.span}>for{"\n"}</Text>
-        lottery
-      </Text>
-    </View>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.authContainer}
+    >
+      <View>
+        <ScrollView>
+          <View style={styles.heroContainer}>
+            <Text style={{ ...styles.text, ...styles.hero }}>
+              The{"\n"}greatest{"\n"}app
+            </Text>
+            <View>
+              <Text style={{ ...styles.text, ...styles.span }}>for</Text>
+            </View>
+            <Text style={{ ...styles.text, ...styles.hero }}>lottery</Text>
+            <View style={styles.authenticationWrapper}>
+              {showUserForm(userForm)}
+            </View>
+          </View>
+        </ScrollView>
+      </View>
+    </KeyboardAvoidingView>
   );
 }

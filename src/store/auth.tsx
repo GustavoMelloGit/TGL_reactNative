@@ -1,23 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { AuthProps, ILogin, ISignIn } from "../models/AuthInterfaces";
+import { AsyncStorageStatic } from "react-native";
 
 const initialState: AuthProps = {
-  isAuthenticated: Boolean(localStorage.getItem("isAuthenticated")),
-  users: [
-    {
-      email: "",
-      password: "",
-      name: "",
-      id: "",
-    },
-  ],
-  user: {
-    email: "",
-    password: "",
-    name: "",
-    id: "",
-  },
-};
+  // isAuthenticated: false,
+  // users: [
+  //   {
+  //     email: "",
+  //     password: "",
+  //     name: "",
+  //     id: "",
+  //   },
+  // ],
+  // user: {
+  //   email: "",
+  //   password: "",
+  //   name: "",
+  //   id: "",
+  // },
+} as AuthProps;
 
 function validEmail(email: string) {
   if (email.length < 6 || !email.includes("@")) {
@@ -40,10 +41,12 @@ const authSlice = createSlice({
     logIn(state, action) {
       const data: ILogin = action.payload;
 
+      if (!state.users) {
+        throw new Error("Nenhum usuário cadastrado");
+      }
       if (!validEmail(data.email) || !validPassword(data.password)) {
         throw new Error("E-mail ou senha inválidos");
       }
-
       const userExists = state.users.find(
         (user) => user.email === data.email && user.password === data.password
       );
@@ -54,12 +57,10 @@ const authSlice = createSlice({
       state.user.id = userExists.id;
       state.user.name = userExists.name;
       state.isAuthenticated = true;
-      localStorage.setItem("isAuthenticated", "Authenticated");
     },
     logOut(state) {
       state.isAuthenticated = false;
       state.user = initialState.user;
-      localStorage.removeItem("isAuthenticated");
     },
     signIn(state, action) {
       const data: ISignIn = action.payload;
