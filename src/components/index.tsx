@@ -8,6 +8,9 @@ import GamesList from "./Games/GamesList";
 import Background from "./ui/Background";
 import NumbersModal from "./Games/NumbersModal";
 import ModalView from "./ui/ModalView";
+import Header from "./ui/Header";
+import Divider from "./ui/Divider";
+import Cart from "./Cart";
 
 export {
   Card,
@@ -20,4 +23,7 @@ export {
   Background,
   NumbersModal,
   ModalView,
+  Header,
+  Divider,
+  Cart,
 };

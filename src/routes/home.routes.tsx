@@ -4,6 +4,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Account from "../screens/Account";
 import Home from "../screens/Home";
+import theme from "../utils/theme";
 
 const Tab = createBottomTabNavigator();
 
@@ -21,7 +22,7 @@ export default function HomeRoutes() {
         }}
       />
       <Tab.Screen
-        name="Account"
+        name="Sua conta"
         component={Account}
         options={{
           headerShown: false,

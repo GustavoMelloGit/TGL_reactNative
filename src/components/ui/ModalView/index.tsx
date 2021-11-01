@@ -11,10 +11,10 @@ import {
 
 //Style
 import { styles } from "./styles";
-import { AntDesign } from "@expo/vector-icons";
 
 //Components
 import Background from "../Background";
+import Header from "../Header";
 
 interface IModalView extends ModalProps {
   children: ReactNode;
@@ -29,12 +29,7 @@ export default function ModalView(props: IModalView) {
     <Modal transparent animationType="slide" {...rest}>
       <TouchableWithoutFeedback>
         <View style={styles.overlay}>
-          <View style={styles.header}>
-            <Text style={styles.title}>{title}</Text>
-            <TouchableOpacity onPress={closeModal}>
-              <AntDesign name="arrowleft" size={24} color="black" />
-            </TouchableOpacity>
-          </View>
+          <Header title={title} closeModal={closeModal} />
           <View style={styles.overlay}>
             <Background>{children}</Background>
           </View>

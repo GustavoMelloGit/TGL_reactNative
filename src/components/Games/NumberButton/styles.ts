@@ -9,7 +9,6 @@ export const styles = StyleSheet.create({
     borderRadius: size / 2,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: theme.colors.borders,
     marginBottom: 5,
     fontFamily: theme.fonts.Arimo700Bold,
   },
