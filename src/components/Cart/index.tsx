@@ -10,6 +10,7 @@ import theme from "../../utils/theme";
 import ArrowedButton from "../ui/ArrowedButton";
 import Card from "../ui/Card";
 import { Divider } from "..";
+import { CartList } from "./sub_components";
 
 const Cart = () => {
   const games = useSelector((state: RootState) => state.games);
@@ -19,7 +20,7 @@ const Cart = () => {
         <Text style={styles.header}>Carrinho</Text>
         {games.cartGames.length > 0 ? (
           <>
-            <Text>{games.cartGames.join(", ")}</Text>
+            <CartList />
           </>
         ) : (
           <Text style={styles.emptyCart}>Carrinho vazio</Text>

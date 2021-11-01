@@ -34,8 +34,12 @@ export default function NumbersModal(props: INumbersModal) {
   }
 
   function handleAddToCart() {
-    dispatch(addToCart({ type, min: max, price }));
-    closeModal();
+    try {
+      dispatch(addToCart({ type, min: max, price }));
+      closeModal();
+    } catch (e: any) {
+      ToastAndroid.show(e.message, ToastAndroid.SHORT);
+    }
   }
   function getGameNumbers() {
     let numbers = [];
