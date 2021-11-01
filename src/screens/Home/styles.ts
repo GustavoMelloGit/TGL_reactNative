@@ -25,10 +25,4 @@ export const HomeStyles = StyleSheet.create({
     fontFamily: theme.fonts.arimo400Italic,
     color: theme.colors.primary,
   },
-  gameNumbersWrapper: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-evenly",
-    marginBottom: 160,
-  },
 });

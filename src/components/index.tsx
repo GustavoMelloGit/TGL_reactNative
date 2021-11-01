@@ -6,6 +6,8 @@ import ArrowedButton from "./ui/ArrowedButton";
 import GameButton from "./Games/GameButon";
 import GamesList from "./Games/GamesList";
 import Background from "./ui/Background";
+import NumbersModal from "./Games/NumbersModal";
+import ModalView from "./ui/ModalView";
 
 export {
   Card,
@@ -16,4 +18,6 @@ export {
   GameButton,
   GamesList,
   Background,
+  NumbersModal,
+  ModalView,
 };

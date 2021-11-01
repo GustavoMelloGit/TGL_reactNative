@@ -1,25 +1,23 @@
 //Utils
 import React, { useState } from "react";
-import { View, Text, ScrollView, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import api from "../../api/api.json";
 //Styles
 import { HomeStyles } from "./styles";
 import { AntDesign } from "@expo/vector-icons";
+import theme from "../../utils/theme";
 //Components
-import { GamesList, Background } from "../../components";
-import NumberButton from "../../components/Games/NumberButton";
+import {
+  GamesList,
+  Background,
+  NumbersModal,
+  ArrowedButton,
+} from "../../components";
 
 export default function Home() {
   const [gameSelected, setGameSelected] = useState(0);
+  const [modal, setModal] = useState(false);
   const gameResponse = api.types[gameSelected];
-
-  function getGameNumbers() {
-    let numbers = [];
-    for (let i = 1; i <= gameResponse.range; i++) {
-      numbers.push(<NumberButton key={i} index={i} />);
-    }
-    return numbers;
-  }
 
   return (
     <Background>
@@ -39,9 +37,16 @@ export default function Home() {
           />
           <Text style={HomeStyles.description}>{gameResponse.description}</Text>
         </View>
-        <ScrollView>
-          <View style={HomeStyles.gameNumbersWrapper}>{getGameNumbers()}</View>
-        </ScrollView>
+        <ArrowedButton
+          text="Faça seu jogo"
+          color={theme.colors.secondary}
+          onPress={() => setModal((prev) => !prev)}
+        />
+        <NumbersModal
+          visible={modal}
+          closeModal={() => setModal((prev) => !prev)}
+          range={gameResponse.range}
+        />
       </View>
     </Background>
   );
