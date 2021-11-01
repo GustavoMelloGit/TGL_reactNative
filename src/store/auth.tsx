@@ -3,22 +3,22 @@ import { AuthProps, ILogin, ISignIn } from "../models/AuthInterfaces";
 import { AsyncStorageStatic } from "react-native";
 
 const initialState: AuthProps = {
-  // isAuthenticated: false,
-  // users: [
-  //   {
-  //     email: "",
-  //     password: "",
-  //     name: "",
-  //     id: "",
-  //   },
-  // ],
-  // user: {
-  //   email: "",
-  //   password: "",
-  //   name: "",
-  //   id: "",
-  // },
-} as AuthProps;
+  isAuthenticated: false,
+  users: [
+    {
+      email: "",
+      password: "",
+      name: "",
+      id: "",
+    },
+  ],
+  user: {
+    email: "",
+    password: "",
+    name: "",
+    id: "",
+  },
+};
 
 function validEmail(email: string) {
   if (email.length < 6 || !email.includes("@")) {
@@ -72,7 +72,10 @@ const authSlice = createSlice({
       } else if (!validPassword(data.password)) {
         throw new Error("Senhas precisam ser mais longas que 6 caracteres");
       }
-      if (state.users.find((user) => user.email === data.email)) {
+      if (
+        state.users.length > 0 &&
+        state.users.find((user) => user.email === data.email)
+      ) {
         throw new Error("E-mail já está sendo utilizado");
       }
       const id = new Date().toString();

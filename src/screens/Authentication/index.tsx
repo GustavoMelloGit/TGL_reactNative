@@ -1,3 +1,4 @@
+//Utils
 import React, { useState } from "react";
 import {
   View,
@@ -6,10 +7,15 @@ import {
   Platform,
   ScrollView,
 } from "react-native";
-import LogIn from "../../components/Form/LogIn";
-import ResetPassword from "../../components/Form/ResetPassword";
-import SignUp from "../../components/Form/SignUp";
+
+//Styles
 import { styles } from "./styles";
+
+//Components
+import { Background } from "../../components";
+import ResetPassword from "../../components/Form/ResetPassword";
+import LogIn from "../../components/Form/LogIn";
+import SignUp from "../../components/Form/SignUp";
 
 export default function Authentication() {
   const [userForm, setUserForm] = useState(0);
@@ -29,7 +35,7 @@ export default function Authentication() {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.authContainer}
     >
-      <View>
+      <Background>
         <ScrollView>
           <View style={styles.heroContainer}>
             <Text style={{ ...styles.text, ...styles.hero }}>
@@ -44,7 +50,7 @@ export default function Authentication() {
             </View>
           </View>
         </ScrollView>
-      </View>
+      </Background>
     </KeyboardAvoidingView>
   );
 }

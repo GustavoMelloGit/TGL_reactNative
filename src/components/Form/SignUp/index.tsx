@@ -1,6 +1,6 @@
 //Utils
 import React, { useState } from "react";
-import { View, Text, TextInput } from "react-native";
+import { View, Text, TextInput, ToastAndroid } from "react-native";
 import FormProps from "../interfaces";
 
 //Style
@@ -21,7 +21,13 @@ export default function SignUp(props: FormProps) {
 
   const dispatch = useDispatch();
   function handleSignIn() {
-    dispatch(signIn({ name, email, password }));
+    try {
+      dispatch(signIn({ name, email, password }));
+      ToastAndroid.show("Cadastrado com sucesso!", ToastAndroid.SHORT);
+      props.setForm(0);
+    } catch (e: any) {
+      console.log(e.message);
+    }
   }
   return (
     <>
@@ -40,6 +46,7 @@ export default function SignUp(props: FormProps) {
             placeholder="Email"
             textContentType="emailAddress"
             keyboardType="email-address"
+            autoCapitalize="none"
             onChangeText={setEmail}
           />
           <TextInput
@@ -47,6 +54,7 @@ export default function SignUp(props: FormProps) {
             placeholder="Password"
             secureTextEntry
             textContentType="password"
+            autoCapitalize="none"
             autoCompleteType="password"
             onChangeText={setPassword}
           />

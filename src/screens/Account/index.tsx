@@ -1,10 +1,10 @@
 import React from "react";
 import { View, Text } from "react-native";
 
-export default function AuthRoutes() {
+export default function Account() {
   return (
     <View>
-      <Text></Text>
+      <Text>Account</Text>
     </View>
   );
 }

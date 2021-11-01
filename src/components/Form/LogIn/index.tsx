@@ -32,6 +32,7 @@ export default function LogIn(props: FormProps) {
             style={styles.input}
             textContentType="emailAddress"
             keyboardType="email-address"
+            autoCapitalize="none"
             placeholder="Email"
             onChangeText={setEmail}
           />
@@ -40,13 +41,12 @@ export default function LogIn(props: FormProps) {
             secureTextEntry
             textContentType="password"
             autoCompleteType="password"
+            autoCapitalize="none"
             placeholder="Password"
             onChangeText={setPassword}
           />
-          <TouchableOpacity>
-            <Text style={LogInStyles.text} onPress={() => props.setForm(1)}>
-              I forgot my password
-            </Text>
+          <TouchableOpacity onPress={() => props.setForm(1)}>
+            <Text style={LogInStyles.text}>I forgot my password</Text>
           </TouchableOpacity>
           <View style={formStyles.buttonWrapper}>
             <ArrowedButton
