@@ -5,7 +5,6 @@ export const styles = StyleSheet.create({
   authContainer: {
     flex: 1,
     alignContent: "center",
-    justifyContent: "center",
   },
   heroContainer: {
     flex: 1,

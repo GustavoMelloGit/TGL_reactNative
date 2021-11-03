@@ -6,5 +6,6 @@ export const LogInStyles = StyleSheet.create({
     color: "#C1C1C1",
     textAlign: "right",
     marginVertical: 15,
+    marginRight: 10,
   },
 });

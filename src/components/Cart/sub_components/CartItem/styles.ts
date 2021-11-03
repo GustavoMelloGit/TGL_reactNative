@@ -13,6 +13,7 @@ export const styles = StyleSheet.create({
     borderRadius: 3,
     width: "100%",
     paddingLeft: 10,
+    paddingRight: 25,
     marginLeft: 6,
     justifyContent: "center",
   },

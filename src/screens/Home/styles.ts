@@ -2,14 +2,19 @@ import { StyleSheet } from "react-native";
 import theme from "../../utils/theme";
 
 export const HomeStyles = StyleSheet.create({
-  container: {},
+  container: {
+    flex: 1,
+  },
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginVertical: 10,
   },
   subHeader: {
-    marginVertical: 10,
+    marginVertical: 5,
+  },
+  content: {
+    justifyContent: "space-between",
+    flex: 1,
   },
   title: {
     fontSize: 18,
@@ -21,7 +26,7 @@ export const HomeStyles = StyleSheet.create({
     fontSize: 18,
     fontFamily: theme.fonts.Arimo700Bold,
     color: theme.colors.primary,
-    marginBottom: 15,
+    marginBottom: 5,
   },
   span: {
     fontFamily: theme.fonts.arimo400,
@@ -33,6 +38,6 @@ export const HomeStyles = StyleSheet.create({
     marginTop: 15,
   },
   cartWrapper: {
-    marginVertical: 20,
+    marginTop: 5,
   },
 });

@@ -4,6 +4,8 @@ import theme from "../../utils/theme";
 export const styles = StyleSheet.create({
   container: {
     padding: 15,
+    height: 230,
+    justifyContent: "space-between",
   },
   header: {
     fontSize: 20,

@@ -36,7 +36,7 @@ export default function Authentication() {
       style={styles.authContainer}
     >
       <Background>
-        <ScrollView>
+        <ScrollView contentContainerStyle={styles.authContainer}>
           <View style={styles.heroContainer}>
             <Text style={{ ...styles.text, ...styles.hero }}>
               The{"\n"}greatest{"\n"}app

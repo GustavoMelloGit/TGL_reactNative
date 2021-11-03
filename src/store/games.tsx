@@ -32,7 +32,7 @@ const gamesSlice = createSlice({
     },
     completeGame(state, action) {
       const data: { max: number; range: number; type: string } = action.payload;
-      selectRandomNumbers();
+
       function randomNumber(min: number, max: number) {
         return Math.floor(Math.random() * (max - min) + min);
       }
@@ -40,10 +40,13 @@ const gamesSlice = createSlice({
       function selectRandomNumbers() {
         if (state.game.numbers.length < data.max) {
           const random = randomNumber(1, data.range);
-          state.game.numbers.push(random);
+          if (!state.game.numbers.includes(random)) {
+            state.game.numbers.push(random);
+          }
           selectRandomNumbers();
         } else return;
       }
+      selectRandomNumbers();
     },
     addToCart(state, action) {
       const data: { type: string; min: number; price: number } = action.payload;
@@ -67,7 +70,7 @@ const gamesSlice = createSlice({
       state.totalPrice -= data.price;
     },
     saveGames(state) {
-      if (state.totalPrice > 30) {
+      if (state.totalPrice >= 30) {
         state.cartGames.forEach((game) => state.savedGames.push(game));
       } else {
         throw new Error("O carrinho precisa ter no mínimo R$30,00");

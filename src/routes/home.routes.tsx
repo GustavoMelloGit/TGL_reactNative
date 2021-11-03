@@ -22,7 +22,7 @@ export default function HomeRoutes() {
         }}
       />
       <Tab.Screen
-        name="Sua conta"
+        name="Conta"
         component={Account}
         options={{
           headerShown: false,

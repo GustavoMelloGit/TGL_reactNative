@@ -1,6 +1,6 @@
 //Utils
 import React, { useState } from "react";
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import api from "../../api/api.json";
 //Styles
 import { HomeStyles } from "./styles";
@@ -32,29 +32,33 @@ export default function Home() {
           </Text>
         </View>
         <Divider />
-        <View style={HomeStyles.subHeader}>
-          <Text style={HomeStyles.subHeader_title}>Jogos disponíveis:</Text>
-          <GamesList
-            gameSelected={gameSelected}
-            setGameSelected={setGameSelected}
+        <View style={HomeStyles.content}>
+          <View style={HomeStyles.subHeader}>
+            <Text style={HomeStyles.subHeader_title}>Jogos disponíveis:</Text>
+            <GamesList
+              gameSelected={gameSelected}
+              setGameSelected={setGameSelected}
+            />
+            <Text style={HomeStyles.description}>
+              {gameResponse.description}
+            </Text>
+          </View>
+          <ArrowedButton
+            text="Faça seu jogo"
+            color={theme.colors.actions}
+            onPress={() => setModal((prev) => !prev)}
           />
-          <Text style={HomeStyles.description}>{gameResponse.description}</Text>
-        </View>
-        <ArrowedButton
-          text="Faça seu jogo"
-          color={theme.colors.actions}
-          onPress={() => setModal((prev) => !prev)}
-        />
-        <NumbersModal
-          visible={modal}
-          closeModal={() => setModal((prev) => !prev)}
-          type={gameResponse.type}
-          range={gameResponse.range}
-          max={gameResponse.max_number}
-          price={gameResponse.price}
-        />
-        <View style={HomeStyles.cartWrapper}>
-          <Cart />
+          <NumbersModal
+            visible={modal}
+            closeModal={() => setModal((prev) => !prev)}
+            type={gameResponse.type}
+            range={gameResponse.range}
+            max={gameResponse.max_number}
+            price={gameResponse.price}
+          />
+          <View style={HomeStyles.cartWrapper}>
+            <Cart />
+          </View>
         </View>
       </View>
     </Background>
