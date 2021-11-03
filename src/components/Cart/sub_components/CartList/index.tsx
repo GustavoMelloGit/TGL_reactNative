@@ -1,12 +1,15 @@
 //Utils
 import React from "react";
-import { View, Text, FlatList } from "react-native";
+import { View, FlatList } from "react-native";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../store";
-import CartItem from "../CartItem";
+
 //Styles
 import { styles } from "./styles";
+
 //Components
+import CartItem from "../CartItem";
+
 export default function CartList() {
   const games = useSelector((state: RootState) => state.games);
   return (
@@ -17,7 +20,7 @@ export default function CartList() {
         renderItem={({ item }) => (
           <CartItem numbers={item.numbers} type={item.type} id={item.id} />
         )}
-        contentContainerStyle={{ paddingBottom: 30, paddingTop: 20 }}
+        contentContainerStyle={{ paddingBottom: 10, paddingTop: 10 }}
       />
     </View>
   );

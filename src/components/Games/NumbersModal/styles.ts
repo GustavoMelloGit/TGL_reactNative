@@ -15,6 +15,23 @@ export const styles = StyleSheet.create({
   buttonWrapper: {
     borderRadius: 10,
     borderWidth: 2,
-    borderColor: theme.colors.secondary,
+    borderColor: theme.colors.actions,
+    height: 40,
+    justifyContent: "center",
+    alignItems: "center",
+    flexGrow: 1,
+  },
+  buttonText: {
+    color: theme.colors.actions,
+    fontSize: 18,
+    fontFamily: theme.fonts.Arimo700BoldItalic,
+  },
+  actions: {
+    width: "100%",
+  },
+  actions__inner: {
+    flexDirection: "row",
+    width: "100%",
+    marginBottom: 6,
   },
 });

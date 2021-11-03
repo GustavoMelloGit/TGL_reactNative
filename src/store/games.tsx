@@ -55,14 +55,15 @@ const gamesSlice = createSlice({
       }
       state.game.type = data.type;
       state.game.date = +new Date();
-      state.game.id = state.cartGames.length;
+      state.game.id = +new Date();
       state.cartGames.push(state.game);
       state.totalPrice += data.price;
       state.game = initialState.game;
     },
     removeFromCart(state, action) {
       const data: { id: number; price: number } = action.payload;
-      state.cartGames.splice(data.id, 1);
+      const index = state.cartGames.findIndex((game) => game.id === data.id);
+      state.cartGames.splice(index, 1);
       state.totalPrice -= data.price;
     },
     saveGames(state) {

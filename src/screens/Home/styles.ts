@@ -9,7 +9,7 @@ export const HomeStyles = StyleSheet.create({
     marginVertical: 10,
   },
   subHeader: {
-    marginVertical: 15,
+    marginVertical: 10,
   },
   title: {
     fontSize: 18,

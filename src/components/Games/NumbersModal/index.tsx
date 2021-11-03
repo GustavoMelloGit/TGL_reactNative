@@ -1,8 +1,19 @@
 //Utils
 import React from "react";
-import { ScrollView, ToastAndroid, View } from "react-native";
+import {
+  ScrollView,
+  Text,
+  ToastAndroid,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { useDispatch } from "react-redux";
-import { addNumberSelected, addToCart } from "../../../store/games";
+import {
+  addNumberSelected,
+  addToCart,
+  cleanNumbersArray,
+  completeGame,
+} from "../../../store/games";
 
 //Style
 import { styles } from "./styles";
@@ -31,6 +42,13 @@ export default function NumbersModal(props: INumbersModal) {
     } catch (e: any) {
       ToastAndroid.show(e.message, ToastAndroid.SHORT);
     }
+  }
+
+  function handleCompleteGame() {
+    dispatch(completeGame({ max, range, type }));
+  }
+  function handleClearGame() {
+    dispatch(cleanNumbersArray());
   }
 
   function handleAddToCart() {
@@ -63,12 +81,31 @@ export default function NumbersModal(props: INumbersModal) {
     >
       <View style={styles.container}>
         <View style={styles.numbersWrapper}>{getGameNumbers()}</View>
-        <View style={styles.buttonWrapper}>
-          <ArrowedButton
-            text="Jogar"
-            color={theme.colors.secondary}
+        <View style={styles.actions}>
+          <View style={styles.actions__inner}>
+            <TouchableOpacity
+              style={{ ...styles.buttonWrapper, marginRight: 5 }}
+              onPress={handleCompleteGame}
+            >
+              <Text style={styles.buttonText}>Complete game</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.buttonWrapper}
+              onPress={handleClearGame}
+            >
+              <Text style={styles.buttonText}>Clear game</Text>
+            </TouchableOpacity>
+          </View>
+          <TouchableOpacity
+            style={styles.buttonWrapper}
             onPress={handleAddToCart}
-          />
+          >
+            <ArrowedButton
+              text="Jogar"
+              color={theme.colors.actions}
+              onPress={handleAddToCart}
+            />
+          </TouchableOpacity>
         </View>
       </View>
     </ModalView>

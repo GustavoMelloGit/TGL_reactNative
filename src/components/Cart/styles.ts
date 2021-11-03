@@ -9,6 +9,7 @@ export const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: theme.fonts.Arimo700BoldItalic,
     color: theme.colors.primary,
+    textTransform: "uppercase",
   },
   emptyCart: {
     fontFamily: theme.fonts.arimo400Italic,
@@ -21,5 +22,12 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: theme.colors.tertiary,
     height: 70,
+    borderRadius: 8,
+  },
+  totalPrice: {
+    textTransform: "uppercase",
+    color: theme.colors.primary,
+    fontFamily: theme.fonts.Arimo700Bold,
+    fontSize: 17,
   },
 });

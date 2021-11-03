@@ -1,10 +1,9 @@
 //Utils
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text } from "react-native";
 import api from "../../api/api.json";
 //Styles
 import { HomeStyles } from "./styles";
-import { AntDesign } from "@expo/vector-icons";
 import theme from "../../utils/theme";
 //Components
 import {
@@ -31,9 +30,6 @@ export default function Home() {
               {gameResponse.type}
             </Text>
           </Text>
-          <TouchableOpacity>
-            <AntDesign name="shoppingcart" size={24} color="black" />
-          </TouchableOpacity>
         </View>
         <Divider />
         <View style={HomeStyles.subHeader}>
