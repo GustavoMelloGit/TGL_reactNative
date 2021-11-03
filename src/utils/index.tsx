@@ -1,4 +1,4 @@
-import { transformToCurrency } from "./functions";
+import { transformToCurrency, formatDate, sortNumbers } from "./functions";
 import theme from "./theme";
 
-export { theme, transformToCurrency };
+export { theme, transformToCurrency, formatDate, sortNumbers };

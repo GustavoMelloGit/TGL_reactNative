@@ -7,6 +7,7 @@ import FormProps from "../interfaces";
 import { styles } from "../../../screens/Authentication/styles";
 import theme from "../../../utils/theme";
 import { formStyles } from "../formStyles";
+import Toast from "react-native-toast-message";
 
 //Components
 import ArrowedButton from "../../ui/ArrowedButton";
@@ -18,17 +19,24 @@ export default function SignUp(props: FormProps) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const dispatch = useDispatch();
+
   function handleSignIn() {
     try {
       dispatch(signIn({ name, email, password }));
-      ToastAndroid.show("Cadastrado com sucesso!", ToastAndroid.SHORT);
+      Toast.show({
+        type: "success",
+        text1: "Cadastrado com sucesso",
+      });
       props.setForm(0);
     } catch (e: any) {
-      console.log(e.message);
+      Toast.show({
+        type: "error",
+        text1: e.message,
+      });
     }
   }
+
   return (
     <>
       <Text style={formStyles.header}>Register</Text>

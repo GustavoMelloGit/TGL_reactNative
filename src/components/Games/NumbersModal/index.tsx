@@ -23,7 +23,10 @@ import theme from "../../../utils/theme";
 import ArrowedButton from "../../ui/ArrowedButton";
 import ModalView from "../../ui/ModalView";
 import NumberButton from "../NumberButton";
+import Toast from "react-native-toast-message";
+import Constant from "expo-constants";
 
+const { statusBarHeight } = Constant;
 interface INumbersModal {
   visible: boolean;
   closeModal: () => void;

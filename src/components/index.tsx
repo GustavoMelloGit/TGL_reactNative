@@ -11,6 +11,7 @@ import ModalView from "./ui/ModalView";
 import Header from "./ui/Header";
 import Divider from "./ui/Divider";
 import Cart from "./Cart";
+import GameItem from "./Games/GameItem";
 
 export {
   Card,
@@ -25,5 +26,6 @@ export {
   ModalView,
   Header,
   Divider,
+  GameItem,
   Cart,
 };

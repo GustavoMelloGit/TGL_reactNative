@@ -1,14 +1,20 @@
+//Utils
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import { useDispatch } from "react-redux";
-import { styles } from "../../../screens/Authentication/styles";
-import { logIn } from "../../../store/auth";
-import theme from "../../../utils/theme";
-import ArrowedButton from "../../ui/ArrowedButton";
-import Card from "../../ui/Card";
 import { formStyles } from "../formStyles";
 import FormProps from "../interfaces";
+import { logIn } from "../../../store/auth";
+
+//Styles
+import theme from "../../../utils/theme";
+import { styles } from "../../../screens/Authentication/styles";
 import { LogInStyles } from "./styles";
+import Toast from "react-native-toast-message";
+
+//Components
+import Card from "../../ui/Card";
+import ArrowedButton from "../../ui/ArrowedButton";
 
 export default function LogIn(props: FormProps) {
   const [email, setEmail] = useState("");
@@ -19,7 +25,7 @@ export default function LogIn(props: FormProps) {
     try {
       dispatch(logIn({ email, password }));
     } catch (e: any) {
-      console.log(e.message);
+      Toast.show({ type: "error", text1: e.message });
     }
   }
 

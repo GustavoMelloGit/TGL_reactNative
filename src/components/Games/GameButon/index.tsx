@@ -18,7 +18,6 @@ export default function GameButton(props: IGameButton) {
 
   return (
     <TouchableOpacity
-      onPress={() => {}}
       style={{
         ...GameButtonStyles.button,
         borderColor: borderColor,

@@ -9,6 +9,5 @@ const Tab = createBottomTabNavigator();
 
 export default function Routes() {
   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
-  // return isAuthenticated ? <HomeRoutes /> : <Authentication />;
-  return <HomeRoutes />;
+  return isAuthenticated ? <HomeRoutes /> : <Authentication />;
 }

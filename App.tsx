@@ -11,6 +11,10 @@ import { StyleSheet, Text, View } from "react-native";
 import { Provider } from "react-redux";
 import Routes from "./src/routes";
 import store from "./src/store";
+import Toast from "react-native-toast-message";
+import Constant from "expo-constants";
+
+const { statusBarHeight } = Constant;
 
 export default function App() {
   const [loadedFonts] = useFonts({
@@ -28,11 +32,17 @@ export default function App() {
     );
   }
   return (
-    <Provider store={store}>
-      <NavigationContainer>
-        <Routes />
-      </NavigationContainer>
-    </Provider>
+    <>
+      <Provider store={store}>
+        <NavigationContainer>
+          <Routes />
+        </NavigationContainer>
+      </Provider>
+      <Toast
+        ref={(ref) => Toast.setRef(ref)}
+        style={{ paddingTop: statusBarHeight }}
+      />
+    </>
   );
 }
 

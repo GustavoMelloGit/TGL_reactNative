@@ -1,6 +1,7 @@
 //Utils
 import React, { useState } from "react";
 import { View, Text, ScrollView } from "react-native";
+import { IRouteProps } from "../../models/RoutesIterface";
 import api from "../../api/api.json";
 //Styles
 import { HomeStyles } from "./styles";
@@ -12,16 +13,15 @@ import {
   NumbersModal,
   ArrowedButton,
   Divider,
-  Card,
   Cart,
 } from "../../components";
 
-export default function Home() {
+export default function Home({ navigation }: IRouteProps) {
   const [gameSelected, setGameSelected] = useState(0);
   const [modal, setModal] = useState(false);
   const gameResponse = api.types[gameSelected];
   return (
-    <Background>
+    <Background hasHeader>
       <View style={HomeStyles.container}>
         <View style={HomeStyles.header}>
           <Text style={HomeStyles.title}>
@@ -31,7 +31,6 @@ export default function Home() {
             </Text>
           </Text>
         </View>
-        <Divider />
         <View style={HomeStyles.content}>
           <View style={HomeStyles.subHeader}>
             <Text style={HomeStyles.subHeader_title}>Jogos disponíveis:</Text>
@@ -57,7 +56,7 @@ export default function Home() {
             price={gameResponse.price}
           />
           <View style={HomeStyles.cartWrapper}>
-            <Cart />
+            <Cart navigation={navigation} />
           </View>
         </View>
       </View>

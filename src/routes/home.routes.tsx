@@ -15,7 +15,6 @@ export default function HomeRoutes() {
         name="Home"
         component={Home}
         options={{
-          headerShown: false,
           tabBarIcon: ({ color }) => (
             <AntDesign name="home" size={24} color={color} />
           ),
@@ -25,7 +24,6 @@ export default function HomeRoutes() {
         name="Conta"
         component={Account}
         options={{
-          headerShown: false,
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="account" size={24} color={color} />
           ),

@@ -2,7 +2,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import api from "../../../../api/api.json";
-import { transformToCurrency } from "../../../../utils";
+import { sortNumbers, transformToCurrency } from "../../../../utils";
 import { useDispatch } from "react-redux";
 import { removeFromCart } from "../../../../store/games";
 //Styles
@@ -18,9 +18,7 @@ interface ICartItem {
 export default function CartItem(props: ICartItem) {
   const game = api.types.find((game) => game.type === props.type);
   const dispatch = useDispatch();
-
-  let numbers = props.numbers;
-  numbers = numbers.slice().sort((a, b) => a - b);
+  const numbers = sortNumbers(props.numbers);
 
   const price = transformToCurrency(game!.price);
   function handleRemoveItem() {
